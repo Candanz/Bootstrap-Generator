@@ -4,12 +4,7 @@
  * So you can use them in JS render functions without having to template them.
  *
  * Github: https://github.com/Candanz/Bootstrap-Generator
- *
- * Created by: Stefan Candan
- * Created at: 6-10-2016 (DD-MM-YYYY)
- *
- * Last Modified by: Stefan Candan
- * Last Modified at: 6-10-2016 (DD-MM-YYYY)
+ * Created By: Stefan Candan
  */
 var BootstrapGenerator = function() {}
 
