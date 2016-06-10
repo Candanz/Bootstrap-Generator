@@ -120,4 +120,64 @@ BootstrapGenerator.prototype.glyphicon = function(options) {
 	return elem;
 }
 
+BootstrapGenerator.prototype.progressbar = function(options) {
+	options = options || {};
+	options.bars = options.bars || [];
+
+	if(options.bars.length > 0) {
+
+		var elem = document.createElement("div");
+		elem.className = "progress";
+
+		var amountOfBars = options.bars.length;
+		for(var i = 0; i < amountOfBars; i++) {
+			var bar = options.bars[i];
+			bar.id = bar.id || null;
+			bar.style = bar.style || "default";
+			bar.animated = bar.animated || false;
+			bar.striped = bar.striped || false;
+			bar.label = bar.label || false;
+			bar.classes = bar.classes || [];
+			bar.procent = bar.procent || 0;
+
+			var style = [];
+
+			if (typeof(bar.classes) == "string") {
+				bar.classes = bar.classes.split(" ");
+			}
+
+			var barElem = document.createElement('div');
+			barElem.className = "progress-bar";
+			barElem.role = "progressbar";
+			barElem.className += " progress-bar-" + bar.style;
+			if(bar.id) {
+				barElem.id = bar.id;
+			}
+			if(bar.classes.length > 0) {
+				barElem.className += " " + bar.classes.join(" ");
+			}
+			if(bar.striped) {
+				barElem.className += " progress-bar-striped";
+				if(bar.animated) {
+					barElem.className += " active";
+				}
+			}
+
+			style.push("width: " + bar.procent + "%");
+			if(bar.label) {
+				barElem.innerHTML = bar.label;
+				style.push("min-width:2em");
+			}
+
+			barElem.style = style.join(";");
+
+			elem.appendChild(barElem);
+		}
+
+		return elem;
+	}
+
+	return "";
+}
+
 var bootstrapGenerator = new BootstrapGenerator();
